@@ -356,7 +356,7 @@ class CalculatorApp(ft.Container):
     def reset(self):
         self.operator = "+"  # 演算子を初期化（+で初期化すると最初の計算が0+数値になる）
         self.operand1 = 0  # 第1operandを0にリセット
-        self.new_operand = True  # 次の入力を新しい数値として受け取るフラグ
+        self.new_operand = True  # 次の入力を新しい数値として受け取る
     # operandの説明は164行目参照
 
 # アプリを起動する
