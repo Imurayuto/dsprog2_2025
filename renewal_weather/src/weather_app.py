@@ -4,7 +4,7 @@ import sqlite3
 import json
 from datetime import datetime
 
-# === データベース関連の関数 ===
+# データベース関連の関数
 
 path = ''
 db_name = 'weather.db'
@@ -189,11 +189,11 @@ def save_weather_forecast_to_db(area_code, weather_data):
                                 (area_code, area_detail_name, forecast_date, weather, wind, wave, temperature, time_define, fetched_at)
                                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);
                             ''', (area_code, area_detail_name, forecast_date,
-                                 weathers[i] if i < len(weathers) else None,
-                                 winds[i] if i < len(winds) else None,
-                                 waves[i] if i < len(waves) else None,
-                                 temps[i] if i < len(temps) else None,
-                                 time_def, fetched_at))
+                                weathers[i] if i < len(weathers) else None,
+                                winds[i] if i < len(winds) else None,
+                                waves[i] if i < len(waves) else None,
+                                temps[i] if i < len(temps) else None,
+                                time_def, fetched_at))
                         except:
                             pass
         
@@ -300,9 +300,9 @@ def get_latest_warnings(area_code):
         conn.close()
 
 
-# === 以下、Fletアプリのコード（次のステップで追加） ===
 
-# === Fletアプリのコード ===
+
+# Fletアプリ
 
 class WeatherApp:
     def __init__(self):
@@ -657,7 +657,7 @@ def main(page: ft.Page):
             )
             page.update()
     
-    # 以下のcreate_area_list()と初期化部分はそのまま
+    
     
     def create_area_list():
         """地域リストを作成"""

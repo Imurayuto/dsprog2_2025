@@ -6,7 +6,7 @@ from datetime import datetime
 path = ''
 db_name = 'weather.db'
 
-# ステップ1: areasテーブル作成
+# areasテーブル作成
 def create_areas_table():
     try:
         conn = sqlite3.connect(path + db_name)
@@ -34,7 +34,7 @@ def create_areas_table():
         conn.close()
 
 
-# ステップ2: weather_forecastsテーブル作成
+# weather_forecastsテーブル作成
 def create_weather_forecasts_table():
     try:
         conn = sqlite3.connect(path + db_name)
@@ -67,7 +67,7 @@ def create_weather_forecasts_table():
         conn.close()
 
 
-# ステップ3: warningsテーブル作成
+# warningsテーブル作成
 def create_warnings_table():
     try:
         conn = sqlite3.connect(path + db_name)
@@ -96,7 +96,7 @@ def create_warnings_table():
         conn.close()
 
 
-# ステップ4: forecast_historyテーブル作成
+# forecast_historyテーブル作成
 def create_forecast_history_table():
     try:
         conn = sqlite3.connect(path + db_name)
@@ -122,7 +122,7 @@ def create_forecast_history_table():
     finally:
         conn.close()
 
-# ステップ5: インデックス作成
+# インデックス作成
 def create_indexes():
     try:
         conn = sqlite3.connect(path + db_name)
@@ -151,7 +151,7 @@ def create_indexes():
     finally:
         conn.close()
 
-# ステップ6: 地域データをDBに保存
+# 地域データをDBに保存
 def save_areas_to_db():
     try:
         # 気象庁APIから地域リストを取得
@@ -207,7 +207,7 @@ def save_areas_to_db():
     finally:
         conn.close()
 
-# ステップ7: 天気予報データをDBに保存
+# 天気予報データをDBに保存
 def save_weather_forecast_to_db(area_code):
     try:
         # 気象庁APIから天気予報を取得
@@ -251,7 +251,7 @@ def save_weather_forecast_to_db(area_code):
                             sql_forecast = '''
                             INSERT INTO weather_forecasts 
                             (area_code, area_detail_name, forecast_date, weather, 
-                             wind, wave, temperature, time_define, fetched_at)
+                            wind, wave, temperature, time_define, fetched_at)
                             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);
                             '''
                             
@@ -280,7 +280,7 @@ def save_weather_forecast_to_db(area_code):
     finally:
         conn.close()
 
-# ステップ8: 警報・注意報データをDBに保存
+# 警報・注意報データをDBに保存
 def save_warnings_to_db(area_code):
     try:
         # 気象庁APIから警報・注意報を取得
@@ -337,7 +337,7 @@ def save_warnings_to_db(area_code):
     finally:
         conn.close()
 
-# ステップ9: DBから最新の天気予報を取得
+# DBから最新の天気予報を取得
 def get_latest_weather_from_db(area_code):
     try:
         # DB接続
@@ -387,7 +387,7 @@ def get_latest_weather_from_db(area_code):
     finally:
         conn.close()
 
-# ステップ10: 予報履歴の日時リストを取得
+# 予報履歴の日時リストを取得
 def get_forecast_history_dates(area_code):
     try:
         # DB接続
@@ -427,7 +427,7 @@ def get_forecast_history_dates(area_code):
     finally:
         conn.close()
 
-# ステップ11: 指定した日時の予報を取得
+# 指定した日時の予報を取得
 def get_weather_by_date(area_code, fetched_at):
     try:
         # DB接続
@@ -471,10 +471,10 @@ if __name__ == '__main__':
     create_areas_table()
     create_weather_forecasts_table()
     create_warnings_table()
-    create_forecast_history_table()  # ← 新しく追加
-    create_indexes()  # ← 新しく追加
+    create_forecast_history_table()  
+    create_indexes() 
     # 地域データを保存
-    save_areas_to_db()  # ← 新しく追加
+    save_areas_to_db() 
     # 東京都（130000）の天気予報を保存
     save_weather_forecast_to_db('130000') 
     # 東京都（130000）の警報・注意報を保存
